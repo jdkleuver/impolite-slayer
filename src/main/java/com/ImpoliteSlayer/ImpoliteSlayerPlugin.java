@@ -66,7 +66,7 @@ public class ImpoliteSlayerPlugin extends Plugin
 		if (playerDialogueTextWidget != null) {
 			String playerText = playerDialogueTextWidget.getText();
 			if(playerText.equals("Okay, great!")) {
-				playerDialogueTextWidget.setText("Fuck you!");
+				playerDialogueTextWidget.setText(config.message());
 			}
 		}
 
@@ -77,7 +77,7 @@ public class ImpoliteSlayerPlugin extends Plugin
 			{
 				if(dialogueOption.getText().equals("Okay, great!"))
 				{
-					dialogueOption.setText("Fuck you!");
+					dialogueOption.setText(config.message());
 				}
 			}
 			dialogueOptions = playerDialogueOptionsWidget.getChildren();
@@ -87,7 +87,10 @@ public class ImpoliteSlayerPlugin extends Plugin
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
-		initImpoliteSlayer();
+		if(event.getGroup().equals("impolite-slayer"))
+		{
+			initImpoliteSlayer();
+		}
 	}
 
 	@Provides
