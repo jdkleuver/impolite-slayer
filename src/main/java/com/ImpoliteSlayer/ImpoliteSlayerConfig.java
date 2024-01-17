@@ -26,6 +26,15 @@ public interface ImpoliteSlayerConfig extends Config
 		return "Screw you!";
 	}
 	@ConfigItem(
+			keyName = "goodMessageEnabled",
+			name = "Enable good message",
+			description = "Enable to also replace the message for good tasks."
+	)
+	default boolean goodMessageEnabled()
+	{
+		return false;
+	}
+	@ConfigItem(
 			keyName = "goodMessage",
 			name = "Good message",
 			description = "What you'd like to say to a slayer master when you receive a good task."

@@ -65,7 +65,7 @@ public class ImpoliteSlayerPlugin extends Plugin
 			if(playerText.equals("Okay, great!")) {
 				if (badTasks.contains(task)) {
 					playerDialogueTextWidget.setText(config.badMessage());
-				} else {
+				} else if (config.goodMessageEnabled()) {
 					playerDialogueTextWidget.setText(config.goodMessage());
 				}
 			}
@@ -79,7 +79,7 @@ public class ImpoliteSlayerPlugin extends Plugin
 					if (dialogueOption.getText().equals("Okay, great!")) {
 						if (badTasks.contains(task)) {
 							dialogueOption.setText(config.badMessage());
-						} else {
+						} else if (config.goodMessageEnabled()) {
 							dialogueOption.setText(config.goodMessage());
 						}
 					}
