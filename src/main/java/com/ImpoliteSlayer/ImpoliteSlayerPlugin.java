@@ -58,29 +58,34 @@ public class ImpoliteSlayerPlugin extends Plugin
 	@Subscribe
 	public void onGameTick(GameTick tick) {
 		String task = slayerPluginService.getTask();
-		if(!badTasks.contains(task)) {
-			return;
-		}
 		Widget playerDialogueTextWidget = client.getWidget(WidgetInfo.DIALOG_PLAYER_TEXT);
 
 		if (playerDialogueTextWidget != null) {
 			String playerText = playerDialogueTextWidget.getText();
 			if(playerText.equals("Okay, great!")) {
-				playerDialogueTextWidget.setText(config.message());
+				if (badTasks.contains(task)) {
+					playerDialogueTextWidget.setText(config.badMessage());
+				} else {
+					playerDialogueTextWidget.setText(config.goodMessage());
+				}
 			}
 		}
 
 		Widget playerDialogueOptionsWidget = client.getWidget(WidgetID.DIALOG_OPTION_GROUP_ID, 1);
 		if (playerDialogueOptionsWidget != null && playerDialogueOptionsWidget.getChildren() != dialogueOptions) {
 			dialogueOptions = playerDialogueOptionsWidget.getChildren();
-			for(Widget dialogueOption: dialogueOptions)
-			{
-				if(dialogueOption.getText().equals("Okay, great!"))
-				{
-					dialogueOption.setText(config.message());
+            if (dialogueOptions != null) {
+				for (Widget dialogueOption : dialogueOptions) {
+					if (dialogueOption.getText().equals("Okay, great!")) {
+						if (badTasks.contains(task)) {
+							dialogueOption.setText(config.badMessage());
+						} else {
+							dialogueOption.setText(config.goodMessage());
+						}
+					}
 				}
+				dialogueOptions = playerDialogueOptionsWidget.getChildren();
 			}
-			dialogueOptions = playerDialogueOptionsWidget.getChildren();
 		}
 	}
 
