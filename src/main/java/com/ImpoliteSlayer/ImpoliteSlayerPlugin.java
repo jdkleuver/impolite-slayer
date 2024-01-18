@@ -58,6 +58,9 @@ public class ImpoliteSlayerPlugin extends Plugin
 	@Subscribe
 	public void onGameTick(GameTick tick) {
 		String task = slayerPluginService.getTask();
+		if(!badTasks.contains(task) && !config.goodMessageEnabled()) {
+			return;
+		}
 		Widget playerDialogueTextWidget = client.getWidget(WidgetInfo.DIALOG_PLAYER_TEXT);
 
 		if (playerDialogueTextWidget != null) {
@@ -65,7 +68,7 @@ public class ImpoliteSlayerPlugin extends Plugin
 			if(playerText.equals("Okay, great!")) {
 				if (badTasks.contains(task)) {
 					playerDialogueTextWidget.setText(config.badMessage());
-				} else if (config.goodMessageEnabled()) {
+				} else {
 					playerDialogueTextWidget.setText(config.goodMessage());
 				}
 			}
@@ -79,7 +82,7 @@ public class ImpoliteSlayerPlugin extends Plugin
 					if (dialogueOption.getText().equals("Okay, great!")) {
 						if (badTasks.contains(task)) {
 							dialogueOption.setText(config.badMessage());
-						} else if (config.goodMessageEnabled()) {
+						} else {
 							dialogueOption.setText(config.goodMessage());
 						}
 					}
