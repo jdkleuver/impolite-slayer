@@ -21,7 +21,7 @@ public interface ImpoliteSlayerConfig extends Config
 			name = "Bad message",
 			description = "What you'd like to say to a slayer master when you receive a bad task."
 	)
-	default String badMessage()
+	default String message()
 	{
 		return "Screw you!";
 	}

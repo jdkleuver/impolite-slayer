@@ -67,7 +67,7 @@ public class ImpoliteSlayerPlugin extends Plugin
 			String playerText = playerDialogueTextWidget.getText();
 			if(playerText.equals("Okay, great!")) {
 				if (badTasks.contains(task)) {
-					playerDialogueTextWidget.setText(config.badMessage());
+					playerDialogueTextWidget.setText(config.message());
 				} else {
 					playerDialogueTextWidget.setText(config.goodMessage());
 				}
@@ -81,7 +81,7 @@ public class ImpoliteSlayerPlugin extends Plugin
 				for (Widget dialogueOption : dialogueOptions) {
 					if (dialogueOption.getText().equals("Okay, great!")) {
 						if (badTasks.contains(task)) {
-							dialogueOption.setText(config.badMessage());
+							dialogueOption.setText(config.message());
 						} else {
 							dialogueOption.setText(config.goodMessage());
 						}
