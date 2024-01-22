@@ -17,7 +17,7 @@ public interface ImpoliteSlayerConfig extends Config
 		return "Waterfiends,Fossil Island Wyverns,Adamant Dragons,Red Dragons,Elves,Steel Dragons,Spiritual Creatures,Iron Dragons";
 	}
 	@ConfigItem(
-			keyName = "badMessage",
+			keyName = "message",
 			name = "Bad message",
 			description = "What you'd like to say to a slayer master when you receive a bad task."
 	)
