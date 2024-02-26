@@ -5,9 +5,9 @@ import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.widgets.ComponentID;
+import net.runelite.api.widgets.InterfaceID;
 import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetID;
-import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -61,7 +61,7 @@ public class ImpoliteSlayerPlugin extends Plugin
 		if(!badTasks.contains(task) && !config.goodMessageEnabled()) {
 			return;
 		}
-		Widget playerDialogueTextWidget = client.getWidget(WidgetInfo.DIALOG_PLAYER_TEXT);
+		Widget playerDialogueTextWidget = client.getWidget(ComponentID.DIALOG_PLAYER_TEXT);
 
 		if (playerDialogueTextWidget != null) {
 			String playerText = playerDialogueTextWidget.getText();
@@ -74,7 +74,7 @@ public class ImpoliteSlayerPlugin extends Plugin
 			}
 		}
 
-		Widget playerDialogueOptionsWidget = client.getWidget(WidgetID.DIALOG_OPTION_GROUP_ID, 1);
+		Widget playerDialogueOptionsWidget = client.getWidget(InterfaceID.DIALOG_OPTION, 1);
 		if (playerDialogueOptionsWidget != null && playerDialogueOptionsWidget.getChildren() != dialogueOptions) {
 			dialogueOptions = playerDialogueOptionsWidget.getChildren();
             if (dialogueOptions != null) {
